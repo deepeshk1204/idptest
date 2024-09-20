@@ -1,0 +1,19 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: my-dummy-service
+  description: This is a dummy service entity in Backstage.
+  tags:
+    - dummy
+    - example
+  annotations:
+    backstage.io/managed-by: my-team
+spec:
+  type: service
+  lifecycle: experimental
+  owner: team-a
+  system: dummy-system
+  providesApis:
+    - my-api
+  consumesApis:
+    - external-api
