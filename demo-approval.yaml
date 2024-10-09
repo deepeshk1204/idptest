@@ -10,9 +10,9 @@ spec:
   parameters:
     - title: Email Content
       required:
-        - emailbody
+        - username
       properties:
-        emailbody:
+        username:
           title: Write the Content for your Email
           type: string
         token:
@@ -27,7 +27,7 @@ spec:
       input:
         url: https://qa.harness.io/ng/account/zEaak-FLS425IEO7OLzMUg/module/idp-admin/orgs/default/projects/idpprojectsc/pipelines/DummyPipeline/pipeline-studio/?storeType=INLINE&stageId=DummyStage&sectionId=EXECUTION
         inputset: 
-          emailbody: ${{ parameters.emailbody }}
+          username: ${{ parameters.username }}
         apikey: ${{ parameters.token }}
   output:
     links:
