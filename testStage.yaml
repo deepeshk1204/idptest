@@ -1,8 +1,8 @@
 apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
-  name: test-email-delivery
-  title: Test Email Delivery
+  name: test-stage-variable
+  title: Test stage variable
   description: A template to test the error time out
 spec:
   owner: Deepesh.kumar
