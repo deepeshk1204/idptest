@@ -20,27 +20,27 @@ spec:
           type: string
           ui:widget: password
           ui:field: HarnessAuthToken
-          stages:
-            title: Stages
-            type: array
-            items:
-              type: object
-              properties:
-                id:
-                  title: Stage Name
-                  type: string
-                  enum:
-                  - TempStage
-                variables:
-                  type: object
-                  properties:
-                    demo:
-                      title: Demo Variable
-                      type: string
-            default:
-            - id: TempStage
+        stages:
+          title: Stages
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                title: Stage Name
+                type: string
+                enum:
+                - TempStage
               variables:
-                demo: ''  
+                type: object
+                properties:
+                  demo:
+                    title: Demo Variable
+                    type: string
+          default:
+          - id: TempStage
+            variables:
+              demo: ''  
   steps:
     - id: trigger
       name: Writing the email body
