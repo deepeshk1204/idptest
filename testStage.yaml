@@ -10,8 +10,8 @@ spec:
   parameters:
     - title: Email Content
       required:
-        - username
-        - stages
+      - username
+      - stages
       properties:
         username:
           title: Write the Content for your Email
@@ -32,8 +32,20 @@ spec:
                 type: string
                 enum:
                 - TempStage
+              template:
+                type: object
+                title: Stage Template
+                properties:
+                  variables:
+                    type: object
+                    title: Template Variables
+                    properties:
+                      demotwo:
+                        title: Demo Variable
+                        type: string
               variables:
                 type: object
+                title: Stage Variable
                 properties:
                   demo:
                     title: Demo Variable
@@ -41,7 +53,10 @@ spec:
           default:
           - id: TempStage
             variables:
-              demo: ''  
+              demo: ''
+            template:
+              variables:
+                demo: ''  
   steps:
     - id: trigger
       name: Writing the email body
