@@ -24,13 +24,13 @@ spec:
           ui:widget: password
           ui:field: HarnessAuthToken
         stages.DummyStage.variables.Stage1Variable:
-          title: Stage1Variable
+          title: Stage1Variable (stages.DummyStage.variables.Stage1Variable )
           type: string
         stages.TempStage.variables.demo:
-          title: demo
+          title: demo (stages.TempStage.variables.demo)
           type: string
         stages.TempStage.variables.demotwo:
-          title: demotwo
+          title: demotwo (stages.TempStage.variables.demotwo)
           type: string
   steps:
     - id: trigger
