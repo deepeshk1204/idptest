@@ -11,6 +11,7 @@ spec:
     - title: Email Content
       required:
         - username
+        - stages
       properties:
         username:
           title: Write the Content for your Email
