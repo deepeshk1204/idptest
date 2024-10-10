@@ -50,6 +50,7 @@ spec:
         url: https://qa.harness.io/ng/account/zEaak-FLS425IEO7OLzMUg/module/idp-admin/orgs/default/projects/idpprojectsc/pipelines/DummyPipeline/pipeline-studio/?storeType=INLINE&stageId=DummyStage&sectionId=EXECUTION
         inputset: 
           username: ${{ parameters.username }}
+          stages: ${{ parameters.stages }}
         apikey: ${{ parameters.token }}
   output:
     links:
