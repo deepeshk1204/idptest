@@ -40,9 +40,9 @@ spec:
         url: https://qa.harness.io/ng/account/zEaak-FLS425IEO7OLzMUg/module/idp-admin/orgs/default/projects/idpprojectsc/pipelines/DummyPipeline/pipeline-studio/?storeType=INLINE&stageId=DummyStage&sectionId=EXECUTION
         inputset: 
           username: ${{ parameters.username }}
-          stages.TempStage.variables.demo: ${{ stages.TempStage.variables.demo }}
-          stages.TempStage.variables.demotwo: ${{ stages.TempStage.variables.demotwo }}
-          stages.DummyStage.variables.Stage1Variable : ${{ parameters.stages.DummyStage.variables.Stage1Variable }}
+          stages.TempStage.variables.demo: ${{ parameters['stages.TempStage.variables.demo'] }}
+          stages.TempStage.variables.demotwo: ${{ parameters['stages.TempStage.variables.demotwo'] }}
+          stages.DummyStage.variables.Stage1Variable : ${{ parameters['stages.DummyStage.variables.Stage1Variable'] }}
         apikey: ${{ parameters.token }}
   output:
     links:
