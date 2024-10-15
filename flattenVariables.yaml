@@ -10,13 +10,13 @@ spec:
   parameters:
     - title: Email Content
       required:
-        - username
+        - pipeline.variables.username
         - stages.DummyStage.variables.Stage1Variable
         - stages.TempStage.variables.demo
         - stages.TempStage.variables.demotwo
       properties:
-        username:
-          title: Write the Content for your Email
+        pipeline.variables.username:
+          title: Write the Content for your username
           type: string
         token:
           title: Harness Token
@@ -39,10 +39,10 @@ spec:
       input:
         url: https://qa.harness.io/ng/account/zEaak-FLS425IEO7OLzMUg/module/idp-admin/orgs/default/projects/idpprojectsc/pipelines/DummyPipeline/pipeline-studio/?storeType=INLINE&stageId=DummyStage&sectionId=EXECUTION
         inputset: 
-          username: ${{ parameters.username }}
-          "stages.TempStage.variables.demo": ${{ parameters['stages.TempStage.variables.demo'] }}
-          "stages.TempStage.variables.demotwo": ${{ parameters['stages.TempStage.variables.demotwo'] }}
-          "stages.DummyStage.variables.Stage1Variable" : ${{ parameters['stages.DummyStage.variables.Stage1Variable'] }}
+          "pipeline.variables.username": ${{ parameters.username }}
+          "pipeline.stages.TempStage.variables.demo": ${{ parameters['stages.TempStage.variables.demo'] }}
+          "pipeline.stages.TempStage.variables.demotwo": ${{ parameters['stages.TempStage.variables.demotwo'] }}
+          "pipeline.stages.DummyStage.variables.Stage1Variable" : ${{ parameters['stages.DummyStage.variables.Stage1Variable'] }}
         apikey: ${{ parameters.token }}
   output:
     links:
