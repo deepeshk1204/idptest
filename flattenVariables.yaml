@@ -11,9 +11,9 @@ spec:
     - title: Email Content
       required:
         - pipeline.variables.username
-        - stages.DummyStage.variables.Stage1Variable
-        - stages.TempStage.variables.demo
-        - stages.TempStage.variables.demotwo
+        - pipeline.stages.DummyStage.variables.Stage1Variable
+        - pipeline.stages.TempStage.variables.demo
+        - pipeline.stages.TempStage.variables.demotwo
       properties:
         pipeline.variables.username:
           title: Write the Content for your username
@@ -23,13 +23,13 @@ spec:
           type: string
           ui:widget: password
           ui:field: HarnessAuthToken
-        stages.DummyStage.variables.Stage1Variable:
+        pipeline.stages.DummyStage.variables.Stage1Variable:
           title: Stage1Variable (stages.DummyStage.variables.Stage1Variable )
           type: string
-        stages.TempStage.variables.demo:
+        pipeline.stages.TempStage.variables.demo:
           title: demo (stages.TempStage.variables.demo)
           type: string
-        stages.TempStage.variables.demotwo:
+        pipeline.stages.TempStage.variables.demotwo:
           title: demotwo (stages.TempStage.variables.demotwo)
           type: string
   steps:
@@ -39,10 +39,10 @@ spec:
       input:
         url: https://qa.harness.io/ng/account/zEaak-FLS425IEO7OLzMUg/module/idp-admin/orgs/default/projects/idpprojectsc/pipelines/DummyPipeline/pipeline-studio/?storeType=INLINE&stageId=DummyStage&sectionId=EXECUTION
         inputset: 
-          "pipeline.variables.username": ${{ parameters.username }}
-          "pipeline.stages.TempStage.variables.demo": ${{ parameters['stages.TempStage.variables.demo'] }}
-          "pipeline.stages.TempStage.variables.demotwo": ${{ parameters['stages.TempStage.variables.demotwo'] }}
-          "pipeline.stages.DummyStage.variables.Stage1Variable" : ${{ parameters['stages.DummyStage.variables.Stage1Variable'] }}
+          "pipeline.variables.username": ${{ parameters['pipeline.variables.username'] }}
+          "pipeline.stages.TempStage.variables.demo": ${{ parameters['pipeline.stages.TempStage.variables.demo'] }}
+          "pipeline.stages.TempStage.variables.demotwo": ${{ parameters['pipeline.stages.TempStage.variables.demotwo'] }}
+          "pipeline.stages.DummyStage.variables.Stage1Variable" : ${{ parameters['pipeline.stages.DummyStage.variables.Stage1Variable'] }}
         apikey: ${{ parameters.token }}
   output:
     links:
