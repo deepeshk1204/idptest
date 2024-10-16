@@ -21,8 +21,8 @@ spec:
         token:
           title: Harness Token
           type: string
-          ui:widget: password
-          ui:field: HarnessAuthToken
+          'ui:widget': password
+          'ui:field': HarnessAuthToken
         pipeline.stages.DummyStage.variables.Stage1Variable:
           title: Stage1Variable (stages.DummyStage.variables.Stage1Variable )
           type: string
@@ -35,39 +35,48 @@ spec:
   steps:
     - id: trigger
       name: Writing the email body
-      action: trigger:harness-custom-pipeline
+      action: 'trigger:harness-custom-pipeline'
       input:
-        url: https://qa.harness.io/ng/account/zEaak-FLS425IEO7OLzMUg/module/idp-admin/orgs/default/projects/idpprojectsc/pipelines/DummyPipeline/pipeline-studio/?storeType=INLINE&stageId=DummyStage&sectionId=EXECUTION
-        inputset: 
-           pipeline:
-              identifier: DummyPipeline
-              stages:
-                - stage:
-                    identifier: DummyStage
-                    type: Custom
-                    variables:
-                      - name: Stage1Variable
-                        type: String
-                        value: {{ parameters['pipeline.stages.DummyStage.variables.Stage1Variable'] }}
-                - stage:
-                    identifier: TempStage
-                    template:
-                      templateInputs:
-                        type: Custom
-                        variables:
-                          - name: demo
-                            type: String
-                            value: ${{ parameters['pipeline.stages.TempStage.variables.demo'] }}
-                          - name: demotwo
-                            type: String
-                            value: ${{ parameters['pipeline.stages.TempStage.variables.demotwo'] }}
-              variables:
-                - name: username
-                  type: String
-                  value: ${{ parameters['pipeline.variables.username'] }}
-
-        apikey: ${{ parameters.token }}
+        url: 
+          https://qa.harness.io/ng/account/zEaak-FLS425IEO7OLzMUg/module/idp-admin/orgs/default/projects/idpprojectsc/pipelines/DummyPipeline/pipeline-studio/?storeType=INLINE&stageId=DummyStage&sectionId=EXECUTION
+        inputset:
+          pipeline:
+            identifier: DummyPipeline
+            stages:
+              - stage:
+                  identifier: DummyStage
+                  type: Custom
+                  variables:
+                    - name: Stage1Variable
+                      type: String
+                      value: 
+                        ${{
+                        parameters['pipeline.stages.DummyStage.variables.Stage1Variable']
+                        }}
+              - stage:
+                  identifier: TempStage
+                  template:
+                    templateInputs:
+                      type: Custom
+                      variables:
+                        - name: demo
+                          type: String
+                          value: 
+                            ${{
+                            parameters['pipeline.stages.TempStage.variables.demo']
+                            }}
+                        - name: demotwo
+                          type: String
+                          value: 
+                            ${{
+                            parameters['pipeline.stages.TempStage.variables.demotwo']
+                            }}
+            variables:
+              - name: username
+                type: String
+                value: '${{ parameters[''pipeline.variables.username''] }}'
+        apikey: '${{ parameters.token }}'
   output:
     links:
       - title: Pipeline Details
-        url: ${{ steps.trigger.output.PipelineUrl }}
+        url: '${{ steps.trigger.output.PipelineUrl }}'
