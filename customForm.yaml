@@ -1,0 +1,73 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: flat-variables
+  title: Flat Variable
+  description: A template to test the error time out
+spec:
+  owner: Deepesh.kumar
+  type: service
+  parameters:
+    - title: Email Content
+      required:
+        - pipeline.variables.username
+        - pipeline.stages.DummyStage.variables.Stage1Variable
+        - pipeline.stages.TempStage.variables.demo
+        - pipeline.stages.TempStage.variables.demotwo
+      properties:
+        pipeline.variables.username:
+          title: Write the Content for your username
+          type: string
+        token:
+          title: Harness Token
+          type: string
+          ui:widget: password
+          ui:field: HarnessAuthToken
+        pipeline.stages.DummyStage.variables.Stage1Variable:
+          title: Stage1Variable (stages.DummyStage.variables.Stage1Variable )
+          type: string
+        pipeline.stages.TempStage.variables.demo:
+          title: demo (stages.TempStage.variables.demo)
+          type: string
+        pipeline.stages.TempStage.variables.demotwo:
+          title: demotwo (stages.TempStage.variables.demotwo)
+          type: string
+  steps:
+    - id: trigger
+      name: Writing the email body
+      action: trigger:harness-custom-pipeline
+      input:
+        url: https://qa.harness.io/ng/account/zEaak-FLS425IEO7OLzMUg/module/idp-admin/orgs/default/projects/idpprojectsc/pipelines/DummyPipeline/pipeline-studio/?storeType=INLINE&stageId=DummyStage&sectionId=EXECUTION
+        inputset: 
+           pipeline:
+              identifier: DummyPipeline
+              stages:
+                - stage:
+                    identifier: DummyStage
+                    type: Custom
+                    variables:
+                      - name: Stage1Variable
+                        type: String
+                        value: {{ parameters['pipeline.stages.DummyStage.variables.Stage1Variable'] }}
+                - stage:
+                    identifier: TempStage
+                    template:
+                      templateInputs:
+                        type: Custom
+                        variables:
+                          - name: demo
+                            type: String
+                            value: ${{ parameters['pipeline.stages.TempStage.variables.demo'] }}
+                          - name: demotwo
+                            type: String
+                            value: ${{ parameters['pipeline.stages.TempStage.variables.demotwo'] }}
+              variables:
+                - name: username
+                  type: String
+                  value: ${{ parameters['pipeline.variables.username'] }}
+
+        apikey: ${{ parameters.token }}
+  output:
+    links:
+      - title: Pipeline Details
+        url: ${{ steps.trigger.output.PipelineUrl }}
