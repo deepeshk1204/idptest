@@ -1,0 +1,40 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: gitsync-pipleine
+  title: GitSync Pipleine
+  description: A template validate GitSync pipleine works
+spec:
+  owner: Deepesh.kumar
+  type: service
+  parameters:
+    - title: GitSync Pipleine Variables
+      required:
+        - pipeline.variables.username
+        - pipeline.stages.GitsyncStageTemplate.variables.greetings
+      properties:
+        pipeline.variables.username:
+          title: Username
+          type: string
+        token:
+          title: Harness Token
+          type: string
+          ui:widget: password
+          ui:field: HarnessAuthToken
+        pipeline.stages.GitsyncStageTemplate.variables.greetings:
+          title: Greetings (pipeline.stages.GitsyncStageTemplate.variables.greetings )
+          type: string
+  steps:
+    - id: trigger
+      name: Writing GitSync Pipleine Variables
+      action: trigger:harness-custom-pipeline
+      input:
+        url: https://qa.harness.io/ng/account/zEaak-FLS425IEO7OLzMUg/module/code/settings/templates/GitSyncPipeline/template-studio/Pipeline/?branch=main&versionLabel=1
+        inputset: 
+          "pipeline.variables.username": ${{ parameters['pipeline.variables.username'] }}
+          "pipeline.stages.GitsyncStageTemplate.variables.greetings": ${{ parameters['pipeline.stages.GitsyncStageTemplate.variables.greetings'] }}
+        apikey: ${{ parameters.token }}
+  output:
+    links:
+      - title: Pipeline Details
+        url: ${{ steps.trigger.output.PipelineUrl }}
