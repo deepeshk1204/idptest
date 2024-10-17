@@ -4,6 +4,7 @@ pipeline:
   tags: {}
   template:
     templateRef: account.GitSyncPipeline
+    versionLabel: "1"
     templateInputs:
       stages:
         - stage:
