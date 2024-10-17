@@ -1,0 +1,49 @@
+template:
+  name: GitSyncPipeline
+  identifier: GitSyncPipeline
+  versionLabel: "1"
+  type: Pipeline
+  tags: {}
+  spec:
+    stages:
+      - stage:
+          name: GitsyncStageTemplate
+          identifier: GitsyncStageTemplate
+          tags: {}
+          template:
+            templateRef: account.GitsyncStage
+            templateInputs:
+              type: Custom
+              variables:
+                - name: greetings
+                  type: String
+                  value: <+input>
+      - stage:
+          name: cusotmStage
+          identifier: cusotmStage
+          description: ""
+          type: Custom
+          spec:
+            execution:
+              steps:
+                - step:
+                    type: ShellScript
+                    name: ShellScript_1
+                    identifier: ShellScript_1
+                    spec:
+                      shell: Bash
+                      executionTarget: {}
+                      source:
+                        type: Inline
+                        spec:
+                          script: echo <+pipeline.variables.username>
+                      environmentVariables: []
+                      outputVariables: []
+                    timeout: 10m
+          tags: {}
+    variables:
+      - name: username
+        type: String
+        description: ""
+        required: false
+        value: <+input>
