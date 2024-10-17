@@ -12,6 +12,7 @@ template:
           tags: {}
           template:
             templateRef: account.GitsyncStage
+            versionLabel: "1"
             templateInputs:
               type: Custom
               variables:
