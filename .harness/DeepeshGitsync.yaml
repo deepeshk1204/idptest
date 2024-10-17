@@ -1,0 +1,23 @@
+pipeline:
+  name: DeepeshGitsync
+  identifier: DeepeshGitsync
+  tags: {}
+  template:
+    templateRef: account.GitSyncPipeline
+    templateInputs:
+      stages:
+        - stage:
+            identifier: GitsyncStageTemplate
+            template:
+              templateInputs:
+                type: Custom
+                variables:
+                  - name: greetings
+                    type: String
+                    value: <+input>
+      variables:
+        - name: username
+          type: String
+          value: <+input>
+  projectIdentifier: tempjt
+  orgIdentifier: default
