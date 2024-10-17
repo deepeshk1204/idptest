@@ -19,7 +19,13 @@ template:
                 source:
                   type: Inline
                   spec:
-                    script: echo "hello world"
+                    script: echo <+stage.variables.greetings>
                 environmentVariables: []
                 outputVariables: []
               timeout: 10m
+    variables:
+      - name: greetings
+        type: String
+        description: ""
+        required: false
+        value: <+input>
