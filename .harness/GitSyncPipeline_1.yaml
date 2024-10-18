@@ -48,3 +48,8 @@ template:
         description: ""
         required: false
         value: <+input>
+      - name: testVariable
+        type: String
+        description: ""
+        required: false
+        value: <+input>
