@@ -20,5 +20,8 @@ pipeline:
         - name: username
           type: String
           value: <+input>
+        - name: testVariable
+          type: String
+          value: <+input>
   projectIdentifier: tempjt
   orgIdentifier: default
