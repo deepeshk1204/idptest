@@ -44,6 +44,7 @@ spec:
           "pipeline.stages.TempStage.variables.demotwo": ${{ parameters['pipeline.stages.TempStage.variables.demotwo'] }}
           "pipeline.stages.DummyStage.variables.Stage1Variable" : ${{ parameters['pipeline.stages.DummyStage.variables.Stage1Variable'] }}
         apikey: ${{ parameters.token }}
+        enableVariableMapping: true
   output:
     links:
       - title: Pipeline Details
