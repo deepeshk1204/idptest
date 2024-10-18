@@ -1,0 +1,41 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: GitSync-variables
+  title: GitSync Variable
+  description: A template to test GitSync variables
+spec:
+  owner: Deepesh.kumar
+  type: service
+  parameters:
+    - title: Email Content
+      required:
+        - pipeline.variables.username
+        - pipeline.stages.GitsyncStageTemplate.variables.greetings
+      properties:
+        pipeline.variables.username:
+          title: Username
+          type: string
+        token:
+          title: Harness Token
+          type: string
+          ui:widget: password
+          ui:field: HarnessAuthToken
+        pipeline.stages.GitsyncStageTemplate.variables.greetings:
+          title: Greetings
+          type: string
+  steps:
+    - id: trigger
+      name: Writing the GitSync Variable
+      action: trigger:harness-custom-pipeline
+      input:
+        url: https://qa.harness.io/ng/account/zEaak-FLS425IEO7OLzMUg/module/cd/orgs/default/projects/tempjt/pipelines/DeepeshGitsync/pipeline-studio/?storeType=REMOTE&connectorRef=account.deepesh&repoName=idptest&branch=main
+        inputset: 
+          "pipeline.variables.username": ${{ parameters['pipeline.variables.username'] }}
+          "pipeline.stages.GitsyncStageTemplate.variables.greetings": ${{ parameters['pipeline.stages.GitsyncStageTemplate.variables.greetings'] }}
+        apikey: ${{ parameters.token }}
+        enableVariableMapping: true
+  output:
+    links:
+      - title: Pipeline Details
+        url: ${{ steps.trigger.output.PipelineUrl }}
