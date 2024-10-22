@@ -8,167 +8,173 @@ spec:
   owner: Deepesh.kumar
   type: service
   parameters:
-  - title: Create Infra Harness CI[ECS Cluster] Pipeline using v1.0.1 template
-      version.
-    description: Inputs for Infra Harness CI [ECS Cluster] Pipeline Provisioner.
-    type: object
-    required:
-      - projectId
-      - techarea
-    properties:
-      token:
-        title: Harness Token
-        type: string
-        ui:widget: password
-        ui:field: HarnessAuthToken
-      projectId:
-        title: AppCI
-        description: Select the AppCI
-        type: string
-        ui:field: HarnessProjectPicker
-        ui:autofocus: true
-      techarea:
-        title: TechArea
-        description: Select the Techarea
-        type: string
-        ui:field: HarnessAutoOrgPicker
-        ui:autofocus: true
-      techstack:
-        title: Harness CI Pipeline Info
-        required:
-          - pipelinename
-          - servicename
-          - repositoryname
-          - gitTag
-        type: object
-        properties:
-          pipelinename:
-            type: string
-            title: Harness Pipeline Name To Provision a New Standard CI Pipeline Workflow.
-          servicename:
-            type: string
-            title: Service Name
-          repositoryname:
-            type: string
-            title: Github.com Repository Name
-          gitTag:
-            type: string
-            title: Github.com Repository Tag to execute standard harness CI pipeline.
-          techstackinfo:
-            $ref: "#/techstackdefinitions/techstack"
-    techstackdefinitions:
-      techstack:
-        title: Application Techstack
-        type: object
-        properties:
-          Select_Techstack:
-            description: Choose the application stack from below drop down.
-            type: string
-            enum:
-              - EcsCluster
-        required:
-          - Select_Techstack
-        dependencies:
-          Select_Techstack:
-            oneOf:
-              - properties:
-                  Select_Techstack:
-                    description: ECS Cluster stack is selected.
-                    enum:
-                      - EcsCluster
-                  DataClass:
-                    description: Enter the Data class Value.
-                    type: string
-                    enum:
-                      - internal
-                      - external
-                    default: internal
-                  ApplicationCI:
-                    description: Enter The Application Ci.
-                    type: string
-                    default: enz
-                  Env:
-                    description: Enter The ENV.
-                    type: string
-                    default: dev
-                  Owner:
-                    description: Enter The Owner.
-                    type: string
-                    default: ENZ
-                  AppRole:
-                    description: Enter the Data class Value.
-                    type: string
-                    default: web-layer
-                  BillingIdentifier:
-                    description: Enter The Application Ci.
-                    type: string
-                    default: cc1234
-                  Portfolio:
-                    description: Enter The ENV.
-                    type: string
-                    default: CTO
-                  RegulatoryControls:
-                    description: Enter The Owner.
-                    type: string
-                    default: no
-                  TagSchemaVersion:
-                    description: Enter The Owner.
-                    type: string
-                    default: v1
-                  CFStackName:
-                    description: Enter The Stack Name.
-                    type: string
-                    default: Harness-ENZ-ECS-Cluster-Stack
-                  AWSConnector:
-                    description: Enter The AWS Connector.
-                    type: string
-                    default: ENZConnectDev
-                  Region:
-                    description: Enter The Region.
-                    type: string
-                    default: us-east-2
-                  CFTemplate:
-                    description: Enter The CF Template Path.
-                    type: string
-                    default: iac/templates/cluster/ECS-Cluster.yaml
-                  GitHubConnector:
-                    description: Enter The GitHub Connector.
-                    type: string
-                    default: us-east-2
-                  Branch:
-                    description: Enter The GitHub Branch.
-                    type: string
-                    default: main
-                required:
-                  - ApplicationCI
-                  - Env
-                  - Owner
-                  - DataClass
-                  - AppRole
-                  - BillingIdentifier
-                  - Portfolio
-                  - RegulatoryControls
-                  - TagSchemaVersion
-                  - CFStackName
-                  - AWSConnector
-                  - Region
-                  - CFTemplate
-                  - GitHubConnector
-                  - Branch
-steps:
-  - id: trigger
-    name: Creating Standardized Harness CI Pipeline For the Stack You Selected.
-    action: trigger:harness-custom-pipeline
-    input:
-      url: https://app.harness.io/ng/account/H6rHO8vtQYKelD_wgjnMpA/all/orgs/OperationsTechnology/projects/ENZ/pipelines/ciclusteridp/pipeline-studio/?storeType=INLINE
-      hidePipelineURLLog: false
-      inputset:
-        appCI: ${{ parameters.projectId | dump }}
-        techarea: ${{ parameters.techarea | dump }}
-        techstack: ${{ parameters.techstack | dump }}
-      apikey: ${{ parameters.token }}
-      showOutputVariables: true
-output:
-  links:
-    - title: Pipeline Details
-      url: ${{ steps.trigger.output.PipelineUrl }}
+    - title: >-
+        Create Infra Harness CI[ECS Cluster] Pipeline using v1.0.1 template
+        version.
+      description: 'Inputs for Infra Harness CI [ECS Cluster] Pipeline Provisioner.'
+      type: object
+      required:
+        - projectId
+        - techarea
+      properties:
+        token:
+          title: Harness Token
+          type: string
+          'ui:widget': password
+          'ui:field': HarnessAuthToken
+        projectId:
+          title: AppCI
+          description: Select the AppCI
+          type: string
+          'ui:field': HarnessProjectPicker
+          'ui:autofocus': true
+        techarea:
+          title: TechArea
+          description: Select the Techarea
+          type: string
+          'ui:field': HarnessAutoOrgPicker
+          'ui:autofocus': true
+        techstack:
+          title: Harness CI Pipeline Info
+          required:
+            - pipelinename
+            - servicename
+            - repositoryname
+            - gitTag
+          type: object
+          properties:
+            pipelinename:
+              type: string
+              title: >-
+                Harness Pipeline Name To Provision a New Standard CI Pipeline
+                Workflow.
+            servicename:
+              type: string
+              title: Service Name
+            repositoryname:
+              type: string
+              title: Github.com Repository Name
+            gitTag:
+              type: string
+              title: >-
+                Github.com Repository Tag to execute standard harness CI
+                pipeline.
+            techstackinfo:
+              $ref: '#/techstackdefinitions/techstack'
+      techstackdefinitions:
+        techstack:
+          title: Application Techstack
+          type: object
+          properties:
+            Select_Techstack:
+              description: Choose the application stack from below drop down.
+              type: string
+              enum:
+                - EcsCluster
+          required:
+            - Select_Techstack
+          dependencies:
+            Select_Techstack:
+              oneOf:
+                - properties:
+                    Select_Techstack:
+                      description: ECS Cluster stack is selected.
+                      enum:
+                        - EcsCluster
+                    DataClass:
+                      description: Enter the Data class Value.
+                      type: string
+                      enum:
+                        - internal
+                        - external
+                      default: internal
+                    ApplicationCI:
+                      description: Enter The Application Ci.
+                      type: string
+                      default: enz
+                    Env:
+                      description: Enter The ENV.
+                      type: string
+                      default: dev
+                    Owner:
+                      description: Enter The Owner.
+                      type: string
+                      default: ENZ
+                    AppRole:
+                      description: Enter the Data class Value.
+                      type: string
+                      default: web-layer
+                    BillingIdentifier:
+                      description: Enter The Application Ci.
+                      type: string
+                      default: cc1234
+                    Portfolio:
+                      description: Enter The ENV.
+                      type: string
+                      default: CTO
+                    RegulatoryControls:
+                      description: Enter The Owner.
+                      type: string
+                      default: 'no'
+                    TagSchemaVersion:
+                      description: Enter The Owner.
+                      type: string
+                      default: v1
+                    CFStackName:
+                      description: Enter The Stack Name.
+                      type: string
+                      default: Harness-ENZ-ECS-Cluster-Stack
+                    AWSConnector:
+                      description: Enter The AWS Connector.
+                      type: string
+                      default: ENZConnectDev
+                    Region:
+                      description: Enter The Region.
+                      type: string
+                      default: us-east-2
+                    CFTemplate:
+                      description: Enter The CF Template Path.
+                      type: string
+                      default: iac/templates/cluster/ECS-Cluster.yaml
+                    GitHubConnector:
+                      description: Enter The GitHub Connector.
+                      type: string
+                      default: us-east-2
+                    Branch:
+                      description: Enter The GitHub Branch.
+                      type: string
+                      default: main
+                  required:
+                    - ApplicationCI
+                    - Env
+                    - Owner
+                    - DataClass
+                    - AppRole
+                    - BillingIdentifier
+                    - Portfolio
+                    - RegulatoryControls
+                    - TagSchemaVersion
+                    - CFStackName
+                    - AWSConnector
+                    - Region
+                    - CFTemplate
+                    - GitHubConnector
+                    - Branch
+    steps:
+      - id: trigger
+        name: Creating Standardized Harness CI Pipeline For the Stack You Selected.
+        action: 'trigger:harness-custom-pipeline'
+        input:
+          url: >-
+            https://app.harness.io/ng/account/H6rHO8vtQYKelD_wgjnMpA/all/orgs/OperationsTechnology/projects/ENZ/pipelines/ciclusteridp/pipeline-studio/?storeType=INLINE
+          hidePipelineURLLog: false
+          inputset:
+            appCI: '${{ parameters.projectId | dump }}'
+            techarea: '${{ parameters.techarea | dump }}'
+            techstack: '${{ parameters.techstack | dump }}'
+          apikey: '${{ parameters.token }}'
+          showOutputVariables: true
+    output:
+      links:
+        - title: Pipeline Details
+          url: '${{ steps.trigger.output.PipelineUrl }}'
