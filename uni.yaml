@@ -13,7 +13,6 @@ spec:
     description: Inputs for Infra Harness CI [ECS Cluster] Pipeline Provisioner.
     type: object
     required:
-      - projectId
       - techarea
     properties:
       token:
