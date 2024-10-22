@@ -25,6 +25,7 @@ spec:
         title: AppCI
         description: Select the AppCI
         type: string
+        default: enz
         ui:field: HarnessProjectPicker
         ui:autofocus: true
       techarea:
