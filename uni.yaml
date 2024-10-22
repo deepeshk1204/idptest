@@ -1,8 +1,8 @@
 apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
-  name: GitSync-variables
-  title: GitSync Variable
+  name: uni-variables
+  title: UNI Variable
   description: A template to test GitSync variables
 spec:
   owner: Deepesh.kumar
