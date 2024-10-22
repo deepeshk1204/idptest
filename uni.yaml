@@ -1,4 +1,13 @@
-parameters:
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: GitSync-variables
+  title: GitSync Variable
+  description: A template to test GitSync variables
+spec:
+  owner: Deepesh.kumar
+  type: service
+  parameters:
   - title: Create Infra Harness CI[ECS Cluster] Pipeline using v1.0.1 template
       version.
     description: Inputs for Infra Harness CI [ECS Cluster] Pipeline Provisioner.
