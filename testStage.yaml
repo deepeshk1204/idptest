@@ -74,6 +74,5 @@ spec:
     text:
       - title: HELM DEPLOYMENT OUTPUT
         content: >
-          `${{
-          steps.trigger.output['pipeline.stages.DummyStage.spec.execution.steps.ShellScript_1.output.outputVariables.testmiddleOutput']
-          }}`
+          ${{ steps.trigger.output['pipeline.stages.DummyStage.spec.execution.steps.ShellScript_1.output.outputVariables.testmiddleOutput'] }}
+
