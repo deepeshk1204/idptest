@@ -71,3 +71,9 @@ spec:
     links:
       - title: Pipeline Details
         url: ${{ steps.trigger.output.PipelineUrl }}
+    text:
+      - title: HELM DEPLOYMENT OUTPUT
+        content: >
+          `${{
+          steps.trigger.output['pipeline.stages.DummyStage.spec.execution.steps.ShellScript_1.output.outputVariables.testmiddleOutput']
+          }}`
