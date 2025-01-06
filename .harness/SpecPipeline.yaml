@@ -1,0 +1,25 @@
+pipeline:
+  name: SpecPipeline
+  identifier: SpecPipeline
+  tags: {}
+  projectIdentifier: ShivamProject
+  orgIdentifier: default
+  stages:
+    - stage:
+        name: sss
+        identifier: sss
+        description: ""
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - step:
+                  name: sss
+                  identifier: sss
+                  template:
+                    templateRef: StepTemplate1
+                    versionLabel: v1
+                    templateInputs:
+                      type: ShellScript
+                      timeout: <+input>
+        tags: {}
