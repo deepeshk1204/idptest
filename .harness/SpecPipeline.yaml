@@ -21,5 +21,10 @@ pipeline:
                     versionLabel: v1
                     templateInputs:
                       type: ShellScript
+                      spec:
+                        source:
+                          type: Inline
+                          spec:
+                            script: <+input>
                       timeout: <+input>
         tags: {}
