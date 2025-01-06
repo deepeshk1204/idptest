@@ -1,0 +1,21 @@
+template:
+  name: StepTemplate1
+  identifier: StepTemplate1
+  versionLabel: v1
+  type: Step
+  projectIdentifier: ShivamProject
+  orgIdentifier: default
+  tags: {}
+  spec:
+    timeout: <+input>
+    type: ShellScript
+    spec:
+      shell: Bash
+      executionTarget: {}
+      delegateSelectors: []
+      source:
+        type: Inline
+        spec:
+          script: echo
+      environmentVariables: []
+      outputVariables: []
