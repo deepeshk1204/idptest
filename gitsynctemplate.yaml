@@ -47,8 +47,8 @@ spec:
             project_description: ${{ parameters.project_description }}
             project_acronym: ${{parameters.project_acronym}}
             idmart_acronym: ${{parameters.idmart_acronym}}
-            custom_groups: []
-            custom_roles: []
+            custom_groups: "[]"
+            custom_roles: "[]"
           pipeline.variables.RESOURCE_VARS_ENVS: {}
           pipeline.variables.RESOURCE_VARS_ENVS_SECRET: {}
           pipeline.variables.RESOURCE_VARS_SECRETS: {}
