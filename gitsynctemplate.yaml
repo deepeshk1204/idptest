@@ -31,15 +31,15 @@ spec:
       input:
         url: https://qa.harness.io/ng/account/zEaak-FLS425IEO7OLzMUg/module/cd/orgs/default/projects/Deepesh_CDE/pipelines/TU_Custom_Create_and_Manage_IACM_Workspaces/pipeline-studio?storeType=INLINE
         inputset: 
-          pipeline.variables.GIT_REPOSITORY_CONNECTOR: ${{
+          GIT_REPOSITORY_CONNECTOR: ${{
             parameters.solutions_factory_details.template_library_connector }}
-          pipeline.variables.GIT_REPOSITORY_PATH: harness-project
-          pipeline.variables.GIT_REPOSITORY_BRANCH: prjct_with_dflt_grps
-          pipeline.variables.GIT_REPOSITORY_NAME: https://git.harness.io/HgTKqISVTX-kQSVsWCHEcA/Harness_Platform_Management/tu-harness-template-library.git
-          pipeline.variables.RESOURCE_OWNER: group:default/Account_Admins
-          pipeline.variables.RESOURCE_NAME: ${{ parameters.organization_id }}_${{
+          GIT_REPOSITORY_PATH: harness-project
+          GIT_REPOSITORY_BRANCH: prjct_with_dflt_grps
+          GIT_REPOSITORY_NAME: https://git.harness.io/HgTKqISVTX-kQSVsWCHEcA/Harness_Platform_Management/tu-harness-template-library.git
+          RESOURCE_OWNER: group:default/Account_Admins
+          RESOURCE_NAME: ${{ parameters.organization_id }}_${{
             parameters.project_name|replace(" ","-") }}
-          pipeline.variables.RESOURCE_VARS:
+          RESOURCE_VARS:
             harness_platform_account: ${{ parameters.solutions_factory_details.harness_account_id }}
             organization_id: ${{ parameters.organization_id }}
             org_acronym: ${{parameters.org_acronym}}
@@ -49,15 +49,14 @@ spec:
             idmart_acronym: ${{parameters.idmart_acronym}}
             custom_groups: "[]"
             custom_roles: "[]"
-          pipeline.variables.RESOURCE_VARS_ENVS: {}
-          pipeline.variables.RESOURCE_VARS_ENVS_SECRET: {}
-          pipeline.variables.RESOURCE_VARS_SECRETS: {}
-          pipeline.variables.INCLUDE_HARNESS_ENVS: true
-          pipeline.variables.IAC_PROVISIONER_TYPE: opentofu
-          pipeline.variables.IAC_PROVISIONER_VERSION: 1.8.0
-          pipeline.variables.IAC_PROVIDER_CONNECTOR: org.hsf_solutions_factory_connector
-          "pipeline.variables.username": ${{ parameters['pipeline.variables.username'] }}
-          "pipeline.stages.GitsyncStageTemplate.variables.greetings": ${{ parameters['pipeline.stages.GitsyncStageTemplate.variables.greetings'] }}
+          RESOURCE_VARS_ENVS: {}
+          RESOURCE_VARS_ENVS_SECRET: {}
+          RESOURCE_VARS_SECRETS: {}
+          INCLUDE_HARNESS_ENVS: true
+          IAC_PROVISIONER_TYPE: opentofu
+          IAC_PROVISIONER_VERSION: 1.8.0
+          IAC_PROVIDER_CONNECTOR: org.hsf_solutions_factory_connector
+          "username": ${{ parameters['pipeline.variables.username'] }}
         apikey: ${{ parameters.token }}
         enableVariableMapping: true
   output:
