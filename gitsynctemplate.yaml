@@ -37,8 +37,7 @@ spec:
           GIT_REPOSITORY_BRANCH: prjct_with_dflt_grps
           GIT_REPOSITORY_NAME: https://git.harness.io/HgTKqISVTX-kQSVsWCHEcA/Harness_Platform_Management/tu-harness-template-library.git
           RESOURCE_OWNER: group:default/Account_Admins
-          RESOURCE_NAME: ${{ parameters.organization_id }}_${{
-            parameters.project_name|replace(" ","-") }}
+          RESOURCE_NAME: hello
           RESOURCE_VARS:
             harness_platform_account: ${{ parameters.solutions_factory_details.harness_account_id }}
             organization_id: ${{ parameters.organization_id }}
