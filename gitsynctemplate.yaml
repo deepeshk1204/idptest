@@ -30,36 +30,30 @@ spec:
       action: trigger:harness-custom-pipeline
       input:
         url: https://qa.harness.io/ng/account/zEaak-FLS425IEO7OLzMUg/module/cd/orgs/default/projects/Deepesh_CDE/pipelines/TU_Custom_Create_and_Manage_IACM_Workspaces/pipeline-studio?storeType=INLINE
-        inputset: 
+        inputset:
           pipeline.variables.GIT_REPOSITORY_CONNECTOR: ${{
             parameters.solutions_factory_details.template_library_connector }}
           pipeline.variables.GIT_REPOSITORY_PATH: harness-project
           pipeline.variables.GIT_REPOSITORY_BRANCH: prjct_with_dflt_grps
-          pipeline.variables.GIT_REPOSITORY_NAME: https://git.harness.io/HgTKqISVTX-kQSVsWCHEcA/Harness_Platform_Management/tu-harness-template-library.git
           pipeline.variables.RESOURCE_OWNER: group:default/Account_Admins
           pipeline.variables.RESOURCE_NAME: ${{ parameters.organization_id }}_${{
             parameters.project_name|replace(" ","-") }}
           pipeline.variables.RESOURCE_VARS:
-            pipeline.variables.RESOURCE_VARS.harness_platform_account: ${{ parameters['pipeline.variables.username'] }}
-            pipeline.variables.RESOURCE_VARS.organization_id: ${{ parameters['pipeline.variables.username'] }}
-            pipeline.variables.RESOURCE_VARS.org_acronym: ${{ parameters['pipeline.variables.username'] }}
-            pipeline.variables.RESOURCE_VARS.project_name: ${{ parameters['pipeline.variables.username'] }}
-            pipeline.variables.RESOURCE_VARS.project_description: ${{ parameters['pipeline.variables.username'] }}
-            pipeline.variables.RESOURCE_VARS.project_acronym: ${{ parameters['pipeline.variables.username'] }}
-            pipeline.variables.RESOURCE_VARS.idmart_acronym: ${{ parameters['pipeline.variables.username'] }}
-            pipeline.variables.RESOURCE_VARS.custom_groups: "[]"
-            pipeline.variables.RESOURCE_VARS.custom_roles: "[]"
+            pipeline.variables.RESOURCE_VARS.harness_platform_account: ${{ parameters.solutions_factory_details.harness_account_id }}
+            pipeline.variables.RESOURCE_VARS.organization_id: ${{ parameters.organization_id }}
+            pipeline.variables.RESOURCE_VARS.org_acronym: ${{parameters.org_acronym}}
+            pipeline.variables.RESOURCE_VARS.project_name: ${{ parameters.project_name }}
+            pipeline.variables.RESOURCE_VARS.project_description: ${{ parameters.project_description }}
+            pipeline.variables.RESOURCE_VARS.project_acronym: ${{parameters.project_acronym}}
+            pipeline.variables.RESOURCE_VARS.idmart_acronym: ${{parameters.idmart_acronym}}
+            pipeline.variables.RESOURCE_VARS.custom_groups: []
+            pipeline.variables.RESOURCE_VARS.custom_roles: []
           pipeline.variables.RESOURCE_VARS_ENVS: {}
           pipeline.variables.RESOURCE_VARS_ENVS_SECRET: {}
           pipeline.variables.RESOURCE_VARS_SECRETS: {}
           pipeline.variables.INCLUDE_HARNESS_ENVS: true
-          pipeline.variables.IAC_PROVISIONER_TYPE: opentofu
-          pipeline.variables.IAC_PROVISIONER_VERSION: 1.8.0
-          pipeline.variables.IAC_PROVIDER_CONNECTOR: org.hsf_solutions_factory_connector
-          "pipeline.variables.username": ${{ parameters['pipeline.variables.username'] }}
-          "pipeline.stages.GitsyncStageTemplate.variables.greetings": ${{ parameters['pipeline.stages.GitsyncStageTemplate.variables.greetings'] }}
         apikey: ${{ parameters.token }}
-        enableVariableMapping: true
+        showOutputVariables: true
   output:
     links:
       - title: Pipeline Details
