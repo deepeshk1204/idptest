@@ -40,15 +40,15 @@ spec:
           pipeline.variables.RESOURCE_NAME: ${{ parameters.organization_id }}_${{
             parameters.project_name|replace(" ","-") }}
           pipeline.variables.RESOURCE_VARS:
-            harness_platform_account: ${{ parameters.solutions_factory_details.harness_account_id }}
-            organization_id: ${{ parameters.organization_id }}
-            org_acronym: ${{parameters.org_acronym}}
-            project_name: ${{ parameters.project_name }}
-            project_description: ${{ parameters.project_description }}
-            project_acronym: ${{parameters.project_acronym}}
-            idmart_acronym: ${{parameters.idmart_acronym}}
-            custom_groups: "[]"
-            custom_roles: "[]"
+            pipeline.variables.RESOURCE_VARS.harness_platform_account: ${{ parameters['pipeline.variables.username'] }}
+            pipeline.variables.RESOURCE_VARS.organization_id: ${{ parameters['pipeline.variables.username'] }}
+            pipeline.variables.RESOURCE_VARS.org_acronym: ${{ parameters['pipeline.variables.username'] }}
+            pipeline.variables.RESOURCE_VARS.project_name: ${{ parameters['pipeline.variables.username'] }}
+            pipeline.variables.RESOURCE_VARS.project_description: ${{ parameters['pipeline.variables.username'] }}
+            pipeline.variables.RESOURCE_VARS.project_acronym: ${{ parameters['pipeline.variables.username'] }}
+            pipeline.variables.RESOURCE_VARS.idmart_acronym: ${{ parameters['pipeline.variables.username'] }}
+            pipeline.variables.RESOURCE_VARS.custom_groups: "[]"
+            pipeline.variables.RESOURCE_VARS.custom_roles: "[]"
           pipeline.variables.RESOURCE_VARS_ENVS: {}
           pipeline.variables.RESOURCE_VARS_ENVS_SECRET: {}
           pipeline.variables.RESOURCE_VARS_SECRETS: {}
