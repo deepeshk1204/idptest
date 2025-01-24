@@ -29,8 +29,8 @@ spec:
       name: Writing the GitSync Variable
       action: trigger:harness-custom-pipeline
       input:
-        # url: https://qa.harness.io/ng/account/zEaak-FLS425IEO7OLzMUg/module/cd/orgs/default/projects/Deepesh_CDE/pipelines/TU_Custom_Create_and_Manage_IACM_Workspaces/pipeline-studio?storeType=INLINE
-        url: https://deveshharness.pr2.harness.io/ng/account/l2XLidvRSE-JKuKxu3sURQ/module/cd/orgs/default/projects/demodeba/pipelines/workflow/pipeline-studio/?storeType=INLINE
+        url: https://qa.harness.io/ng/account/zEaak-FLS425IEO7OLzMUg/module/cd/orgs/default/projects/Deepesh_CDE/pipelines/TU_Custom_Create_and_Manage_IACM_Workspaces/pipeline-studio?storeType=INLINE
+        # url: https://deveshharness.pr2.harness.io/ng/account/l2XLidvRSE-JKuKxu3sURQ/module/cd/orgs/default/projects/demodeba/pipelines/workflow/pipeline-studio/?storeType=INLINE
         inputset:
           pipeline.variables.GIT_REPOSITORY_CONNECTOR: ${{
             parameters.solutions_factory_details.template_library_connector }}
