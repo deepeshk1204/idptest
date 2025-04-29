@@ -1,0 +1,22 @@
+pipeline:
+  name: Rempte
+  identifier: Rempte
+  tags: {}
+  projectIdentifier: Ramya
+  orgIdentifier: Ramya
+  stages:
+    - stage:
+        name: sss
+        identifier: sss
+        description: ""
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - step:
+                  name: sss
+                  identifier: sss
+                  template:
+                    templateRef: account.tf_template4
+                    versionLabel: v0.0.0
+        tags: {}
