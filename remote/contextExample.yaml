@@ -39,7 +39,8 @@ spec:
         type: string
         ui:field: ContextViewer
         ui:options:
-          getContextData: '{{formContext.repoName}}'
+          getContextData:
+            '{ formContext.repoName }': null
       branchName:
         title: Default Branch
         readonly: true
@@ -47,7 +48,8 @@ spec:
         type: string
         ui:field: ContextViewer
         ui:options:
-          getContextData: '{{formContext.repoName}}'
+          getContextData:
+            '{ formContext }': null
       typeName:
         title: Visibility
         readonly: true
@@ -55,14 +57,16 @@ spec:
         type: string
         ui:field: ContextViewer
         ui:options:
-          getContextData: '{{formContext.repoName}}'
+          getContextData:
+            '{ formContext.repoName }': null
       formContext:
         title: Live Form Context
         description: DEBUG Context
         type: string
         ui:field: ContextViewer
         ui:options:
-          getContextData: '{{formContext}}'
+          getContextData:
+            '{ formContext }': null
   steps:
   - id: fetch-base
     name: Fetch Base
