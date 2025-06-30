@@ -1,0 +1,89 @@
+apiVersion: harness.io/v1
+kind: Workflow
+type: service
+identifier: test123
+name: test123
+owner: group:account/AccAdmin
+spec:
+  output:
+    links:
+    - title: Repository
+      url: ${{ steps['publish'].output.remoteUrl }}
+    - title: Open in catalog
+      icon: catalog
+      entityRef: ${{ steps['register'].output.entityRef }}
+  lifecycle: production
+  parameters:
+  - title: Repo Picker
+    properties:
+      gitUsername:
+        title: Github username
+        description: Enter your Github username
+        type: string
+      repoPicker:
+        title: GitHub Repositories
+        type: string
+        description: Pick one of GitHub Repos
+        ui:field: SelectFieldFromApi
+        ui:options:
+          path: proxy/github-api/users/{{parameters.gitUsername}}/repos
+          valueSelector: full_name
+          setContextData:
+            repoName: name
+            branch: default_branch
+            type: visibility
+      repositoryName:
+        title: Repo Name
+        readonly: true
+        description: Repository Name
+        type: string
+        ui:field: ContextViewer
+        ui:options:
+          getContextData: '{{formContext.repoName}}'
+      branchName:
+        title: Default Branch
+        readonly: true
+        description: Default Branch
+        type: string
+        ui:field: ContextViewer
+        ui:options:
+          getContextData: '{{formContext.repoName}}'
+      typeName:
+        title: Visibility
+        readonly: true
+        description: Visibility
+        type: string
+        ui:field: ContextViewer
+        ui:options:
+          getContextData: '{{formContext.repoName}}'
+      formContext:
+        title: Live Form Context
+        description: DEBUG Context
+        type: string
+        ui:field: ContextViewer
+        ui:options:
+          getContextData: '{{formContext}}'
+  steps:
+  - id: fetch-base
+    name: Fetch Base
+    action: fetch:template
+    input:
+      url: https://github.com/backstage/software-templates/blob/main/
+      values:
+        name: ${{ parameters.github_repo }}
+        owner: ${{ parameters.owner }}
+  - id: publish
+    name: Publish
+    action: publish:github
+    input:
+      allowedHosts:
+      - github.com
+      description: This is ${{ parameters.name }}
+      repoUrl: github.com?repo=${{ parameters.github_repo }}&owner=${{ parameters.github_org
+        }}
+  ownedBy:
+  - group:account/AccAdmin
+metadata:
+  description: scaffolder v1beta3 template demo
+  tags:
+  - spotify
