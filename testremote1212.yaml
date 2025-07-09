@@ -1,0 +1,42 @@
+apiVersion: harness.io/v1
+kind: Workflow
+type: service
+identifier: dynamicpickersampleuseremailnodollar
+name: Sample-User-Email-No-Dollar
+owner: owner-id
+spec:
+  parameters:
+  - title: Enter your details
+    properties:
+      accoundId:
+        type: string
+        title: Account ID
+      customValidate:
+        type: string
+        ui:field: ValidateAndFetch
+        ui:options:
+          button:
+            title: Auto Select Current User
+          path: proxy/harness-api/ng/api/user/currentUser?accountIdentifier={{parameters.accoundId}}&pageIndex=0&pageSize=50
+          setContextData:
+            email: data.name
+      email:
+        title: User Email
+        type: string
+        ui:field: ContextViewer
+        ui:options:
+          getContextData: ${{formContext.email}}
+      debug:
+        title: User Email
+        type: string
+        ui:field: ContextViewer
+        ui:options:
+          getContextData: ${{formContext}}
+  steps:
+  - action: debug:log
+    id: debug-pull-request
+    name: Pull Request Created
+    input:
+      message: Hello, Your Pull Request has been created.
+metadata:
+  description: Sample-User-Email
