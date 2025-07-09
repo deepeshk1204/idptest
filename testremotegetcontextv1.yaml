@@ -1,0 +1,36 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: Dynamic-Picker-Sample-User-Email-No-Dollar
+  title: Sample-User-Email-No-Dollar
+  description: Sample-User-Email
+spec:
+  owner: owner-id
+  type: service
+  parameters:
+    - title: Enter your details
+      properties:
+        accoundId: 
+          type: string
+          title: Account ID
+        customValidate:
+          type: string
+          ui:field: ValidateAndFetch
+          ui:options:
+            button: 
+              title: Auto Select Current User
+            path: proxy/harness-api/ng/api/user/currentUser?accountIdentifier={{parameters.accoundId}}&pageIndex=0&pageSize=50
+            setContextData:
+              email: data.name
+        email:
+          title: User Email
+          type: string
+          ui:field: ContextViewer
+          ui:options: 
+            getContextData: {{formContext.email}}
+  steps:
+  - action: debug:log
+    id: debug-pull-request
+    name: Pull Request Created
+    input:
+      message: Hello, Your Pull Request has been created. 
