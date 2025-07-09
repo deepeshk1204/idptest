@@ -2,7 +2,7 @@ apiVersion: harness.io/v1
 kind: Workflow
 type: service
 identifier: dynamicpickersampleuseremailnodollarremote
-name: Sample-User-Email-No-Dollar-Remote-test
+name: Sample-User-Email-No-Dollar-Remote-test-123
 owner: owner-id
 spec:
   parameters:
