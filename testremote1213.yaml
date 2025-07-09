@@ -2,7 +2,7 @@ apiVersion: harness.io/v1
 kind: Workflow
 type: service
 identifier: dynamicpickersampleuseremailnodollarremote
-name: Sample-User-Email-No-Dollar-Remote
+name: Sample-User-Email-No-Dollar-Remote-test
 owner: owner-id
 spec:
   parameters:
@@ -25,13 +25,13 @@ spec:
         type: string
         ui:field: ContextViewer
         ui:options:
-          getContextData: {{formContext.email}}
+          getContextData: ${{formContext.email}}
       debug:
         title: User Email
         type: string
         ui:field: ContextViewer
         ui:options:
-          getContextData: {{formContext}}
+          getContextData: ${{formContext}}
   steps:
   - action: debug:log
     id: debug-pull-request
