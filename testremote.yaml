@@ -1,0 +1,51 @@
+apiVersion: harness.io/v1
+kind: Workflow
+type: service
+identifier: remote_get_context_data
+name: Remote Get Context Data
+owner: user:account/deepesh.kumar@harness.io
+spec:
+  output:
+    links:
+    - title: Pipeline Details
+      url: ${{ steps.trigger.output.PipelineUrl }}
+  lifecycle: experimental
+  parameters:
+  - title: Service Details
+    required:
+    - service_name
+    properties:
+      token:
+        title: Harness Token
+        type: string
+        ui:widget: password
+        ui:field: HarnessAuthToken
+      service_name:
+        title: Service Name
+        type: string
+        description: Mention the project name
+      repositoryName:
+        title: Repository Name
+        readonly: true
+        description: Check your Repository Name
+        type: string
+        ui:field: ContextViewer
+        ui:options:
+          getContextData: ${{dadadsa.dadas}}
+  steps:
+  - id: trigger
+    name: Creating your appication
+    action: trigger:harness-custom-pipeline
+    input:
+      url:
+      - Harness Pipeline URL
+      inputset:
+        service_name: ${{ parameters.service_name }}
+      apikey: ${{ parameters.token }}
+  ownedBy:
+  - user:account/deepesh.kumar@harness.io
+metadata:
+  description: Test Remote Get Context Data
+  tags:
+  - java
+  - data
