@@ -1,0 +1,13 @@
+apiVersion: harness.io/v1
+kind: System
+type: system
+identifier: remote_system
+name: Remote System
+owner: user:account/deepesh.kumar@harness.io
+spec:
+  lifecycle: ''
+metadata:
+  description: Remote System
+  tags:
+  - spotify
+  - java
