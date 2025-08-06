@@ -1,0 +1,16 @@
+apiVersion: harness.io/v1
+kind: Component
+type: component
+identifier: remote_component_connected_with_system
+name: Remote component connected with system
+owner: user:account/deepesh.kumar@harness.io
+spec:
+  lifecycle: experimental
+  partOf:
+  - system:account/remote_system
+  system:
+  - system:account/remote_system
+metadata:
+  tags:
+  - rest
+  - spotify
