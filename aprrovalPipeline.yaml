@@ -1,0 +1,34 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: approvalpipeline
+  title: Approval Pipeline 
+spec:
+  owner: deepesh.kumar@harness.io
+  type: service
+  parameters:
+    - title: Deploy service
+      properties:     
+        message:
+          title: Message
+          type: string       
+        token:
+          title: Harness Token
+          type: string
+          ui:widget: password
+          ui:field: HarnessAuthToken
+  steps:
+    - id: trigger
+      name: Run Wait Pipeline
+      action: trigger:harness-custom-pipeline
+      input:
+        url: https://qa.harness.io/ng/account/px7xd_BFRCi-pfWPYXVjvw/all/orgs/default/projects/Deepesh_CDE/pipelines/Approval_pipeline/pipeline-studio/?storeType=INLINE
+        inputset: 
+          "message": ${{ parameters.message }}
+        apikey: ${{ parameters.token }}      
+  output:
+    links:
+      - title: Pipeline Details
+        url: ${{ steps.trigger.output.PipelineUrl }}
+      - title: Pipeline Details two
+        url: ${{ steps.triggertwo.output.PipelineUrl }}
