@@ -1,7 +1,7 @@
 apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
-  name: waitpipeline
+  name: waitpipelineup
   title: Wait Pipeline
 spec:
   owner: deepesh.kumar@harness.io
