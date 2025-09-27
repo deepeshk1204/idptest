@@ -2,7 +2,7 @@ apiVersion: harness.io/v1
 kind: Workflow
 type: workflow
 identifier: remote_workflow_101
-name: Remote Workflow 101
+name: Remote Workflow 101 develop branch
 owner: user:account/deepesh.kumar@harness.io
 spec:
   output:
@@ -11,7 +11,7 @@ spec:
       url: ${{ steps.trigger.output.PipelineUrl }}
   lifecycle: test
   parameters:
-  - title: Service Details
+  - title: Service Details Develop Branch
     required:
     - service_name
     properties:
@@ -21,12 +21,12 @@ spec:
         ui:widget: password
         ui:field: HarnessAuthToken
       service_name:
-        title: Service Name
+        title: Service Name Develop Branch
         type: string
         description: Mention the project name
   steps:
   - id: trigger
-    name: Creating your appication
+    name: Creating your appication from Develop Branch
     action: trigger:harness-custom-pipeline
     input:
       url: https://qa.harness.io/ng/account/zEaak-FLS425IEO7OLzMUg/module/idp/entity/create/workflow
