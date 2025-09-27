@@ -1,0 +1,40 @@
+apiVersion: harness.io/v1
+kind: Workflow
+type: workflow
+identifier: remote_workflow_101
+name: Remote Workflow 101
+owner: user:account/deepesh.kumar@harness.io
+spec:
+  output:
+    links:
+    - title: Pipeline Details
+      url: ${{ steps.trigger.output.PipelineUrl }}
+  lifecycle: test
+  parameters:
+  - title: Service Details
+    required:
+    - service_name
+    properties:
+      token:
+        title: Harness Token
+        type: string
+        ui:widget: password
+        ui:field: HarnessAuthToken
+      service_name:
+        title: Service Name
+        type: string
+        description: Mention the project name
+  steps:
+  - id: trigger
+    name: Creating your appication
+    action: trigger:harness-custom-pipeline
+    input:
+      url: https://qa.harness.io/ng/account/zEaak-FLS425IEO7OLzMUg/module/idp/entity/create/workflow
+      inputset:
+        service_name: ${{ parameters.service_name }}
+      apikey: ${{ parameters.token }}
+metadata:
+  description: Remote Workflow 101
+  tags:
+  - spotify
+  - java
