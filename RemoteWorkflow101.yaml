@@ -34,7 +34,7 @@ spec:
         service_name: ${{ parameters.service_name }}
       apikey: ${{ parameters.token }}
 metadata:
-  description: Remote Workflow 101
+  description: Remote Workflow 101 develop
   tags:
   - spotify
   - java
