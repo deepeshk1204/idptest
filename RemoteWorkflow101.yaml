@@ -24,6 +24,14 @@ spec:
         title: Service Name Develop Branch
         type: string
         description: Mention the project name
+    - title: User Details Develop Branch
+      required:
+      - user_name
+      properties:
+        user_name:
+          title: Service Name Develop Branch
+          type: string
+          description: Mention the project name        
   steps:
   - id: trigger
     name: Creating your appication from Develop Branch
