@@ -15,6 +15,10 @@ spec:
     required:
     - service_name
     properties:
+      user_name:
+        title: User Name
+        type: string
+        description: Mention the user name
       token:
         title: Harness Token
         type: string
