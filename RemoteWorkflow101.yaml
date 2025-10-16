@@ -9,9 +9,8 @@ spec:
     links:
     - title: Pipeline Details
       url: ${{ steps.trigger.output.PipelineUrl }}
-  lifecycle: test
   parameters:
-  - title: Service Details Develop Branch
+  - title: Service Details
     required:
     - service_name
     properties:
@@ -21,28 +20,20 @@ spec:
         ui:widget: password
         ui:field: HarnessAuthToken
       service_name:
-        title: Service Name Develop Branch
+        title: Service Name
         type: string
         description: Mention the project name
-  - title: User Details Develop Branch
-    required:
-    - user_name
-    properties:
-      user_name:
-        title: Service Name Develop Branch
+      deploy_name:
+        title: Deploy Name
         type: string
-        description: Mention the project name        
+        description: Mention the project name
   steps:
   - id: trigger
-    name: Creating your appication from Develop Branch
+    name: Creating your appication
     action: trigger:harness-custom-pipeline
     input:
-      url: https://qa.harness.io/ng/account/zEaak-FLS425IEO7OLzMUg/module/idp/entity/create/workflow
+      url:
+      - Harness Pipeline URL
       inputset:
         service_name: ${{ parameters.service_name }}
       apikey: ${{ parameters.token }}
-metadata:
-  description: Remote Workflow 101 develop
-  tags:
-  - spotify
-  - java
