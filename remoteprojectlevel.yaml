@@ -2,7 +2,7 @@ apiVersion: harness.io/v1
 kind: Workflow
 type: workflow
 identifier: Remote_Project_level_102
-name: Remote Project level 102
+name: Remote Project level 102 Project level
 owner: user:account/deepesh.kumar@harness.io
 orgIdentifier: default
 projectIdentifier: Deepesh_CDE
@@ -22,6 +22,10 @@ spec:
         type: string
         ui:widget: password
         ui:field: HarnessAuthToken
+      user_name:
+        title: User Name
+        type: string
+        description: Mention the project name        
       service_name:
         title: Service Name
         type: string
