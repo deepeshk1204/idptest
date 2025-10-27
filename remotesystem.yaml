@@ -6,6 +6,8 @@ name: Remote System
 owner: user:account/deepesh.kumar@harness.io
 spec:
   lifecycle: ''
+  system:
+  - system:account/demo_system
 metadata:
   description: Remote System
   tags:
