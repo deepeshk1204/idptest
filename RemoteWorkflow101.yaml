@@ -45,6 +45,14 @@ spec:
       inputset:
         service_name: ${{ parameters.service_name }}
       apikey: ${{ parameters.token }}
+  - id: triggertwo
+    name: Creating your second appication
+    action: trigger:harness-custom-pipeline
+    input:
+      url: https://qa.harness.io/ng/account/zEaak-FLS425IEO7OLzMUg/module/idp/entity/create/workflow
+      inputset:
+        service_name: ${{ parameters.service_name }}
+      apikey: ${{ parameters.token }}
 metadata:
   description: Remote Workflow 101
   tags:
