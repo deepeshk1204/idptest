@@ -23,10 +23,6 @@ spec:
         title: Service Name
         type: string
         description: Mention the project name
-      deploy_name:
-        title: Deploy Name
-        type: string
-        description: Mention the project name
   steps:
   - id: trigger
     name: Creating your appication
@@ -37,3 +33,5 @@ spec:
       inputset:
         service_name: ${{ parameters.service_name }}
       apikey: ${{ parameters.token }}
+metadata:
+  description: Remote Workflow 101 develop branch
