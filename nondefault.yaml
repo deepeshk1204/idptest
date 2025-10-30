@@ -1,0 +1,39 @@
+apiVersion: harness.io/v1
+kind: Workflow
+type: workflow
+identifier: No_default_branch
+name: No default branch
+owner: user:account/deepesh.kumar@harness.io
+spec:
+  output:
+    links:
+    - title: Pipeline Details
+      url: ${{ steps.trigger.output.PipelineUrl }}
+  lifecycle: test
+  parameters:
+  - title: Service Details
+    required:
+    - service_name
+    properties:
+      token:
+        title: Harness Token
+        type: string
+        ui:widget: password
+        ui:field: HarnessAuthToken
+      service_name:
+        title: Service Name
+        type: string
+        description: Mention the project name
+  steps:
+  - id: trigger
+    name: Creating your appication
+    action: trigger:harness-custom-pipeline
+    input:
+      url: https://qa.harness.io/ng/account/zEaak-FLS425IEO7OLzMUg/module/cd/orgs/default/projects/Deepesh_CDE/pipelines/testApproval/pipeline-studio/?storeType=INLINE
+      inputset:
+        service_name: ${{ parameters.service_name }}
+      apikey: ${{ parameters.token }}
+metadata:
+  description: No default branch
+  tags:
+  - spotify
