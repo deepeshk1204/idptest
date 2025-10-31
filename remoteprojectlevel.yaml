@@ -11,7 +11,6 @@ spec:
     links:
     - title: Pipeline Details
       url: ${{ steps.trigger.output.PipelineUrl }}
-  lifecycle: test
   parameters:
   - title: Service Details
     required:
@@ -22,10 +21,6 @@ spec:
         type: string
         ui:widget: password
         ui:field: HarnessAuthToken
-      user_name:
-        title: User Name
-        type: string
-        description: Mention the project name        
       service_name:
         title: Service Name
         type: string
@@ -35,13 +30,7 @@ spec:
     name: Creating your appication
     action: trigger:harness-custom-pipeline
     input:
-      url:
-      - Harness Pipeline URL
+      url: https://qa.harness.io/ng/account/zEaak-FLS425IEO7OLzMUg/all/orgs/default/projects/Deepesh_CDE/pipelines/testApproval/pipeline-studio/?storeType=INLINE
       inputset:
         service_name: ${{ parameters.service_name }}
       apikey: ${{ parameters.token }}
-metadata:
-  description: Remote Project level 102
-  tags:
-  - spotify
-  - java
