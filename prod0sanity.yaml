@@ -1,0 +1,91 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: x-api-key-sanity
+  title: Prod 0 Sanity
+  description: A template to Deploy service
+spec:
+  owner: deepesh.kumar@harness.io
+  type: service
+  parameters:
+    - title: Deploy service
+      required:
+        - username
+        - version
+      properties:
+        name:
+          title: Select environments
+          type: array
+          items:
+            type: string
+            enum:
+              - production
+              - staging
+              - development
+          uniqueItems: true
+          ui:widget: checkboxes       
+        username:
+          title: Username
+          type: string
+        version:
+          title: Version
+          type: string
+        apiKeySecret:  
+          title: API Key Secret
+          type: string
+           
+  steps:
+    - id: trigger
+      name: Run Deploy service
+      action: trigger:harness-custom-pipeline
+      input:
+        url: apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: x-api-key-new
+  title: Deploy service using x-api-key new
+  description: A template to Deploy service
+spec:
+  owner: deepesh.kumar@harness.io
+  type: service
+  parameters:
+    - title: Deploy service
+      required:
+        - username
+      properties: 
+        username:
+          title: Username
+          type: string
+        token:
+          title: Harness Token
+          type: string
+          ui:widget: password
+          ui:field: HarnessAuthToken
+           
+  steps:
+    - id: trigger
+      name: Run Deploy service
+      action: trigger:harness-custom-pipeline
+      input:
+        url: https://idp-prod0.harness.io/ng/account/MGFmY2E3NjAtOGQ0Yy00M2/module/cd/orgs/default/projects/idptest/pipelines/hello/pipeline-studio/?storeType=INLINE
+        inputset: 
+          "name": ${{ parameters.name }}
+          "username": ${{ parameters.username }}
+          "pipeline.stages.deploy.variables.version": ${{ parameters.version }}
+          "pipeline.stages.deploy.spec.execution.steps.ShellScript_1.spec.environmentVariables.scriptVar":  ${{ parameters.username }}
+        apikey: ${{ parameters.token }}  
+  output:
+    links:
+      - title: Pipeline Details
+        url: ${{ steps.trigger.output.PipelineUrl }}
+
+        inputset: 
+          "name": ${{ parameters.name }}
+          "username": ${{ parameters.username }}
+          "pipeline.stages.deploy.variables.version": ${{ parameters.version }}
+          "pipeline.stages.deploy.spec.execution.steps.ShellScript_1.spec.environmentVariables.scriptVar":  ${{ parameters.username }}
+        apiKeySecret: ${{ parameters.apiKeySecret }}
+  output:
+    links:
+      - title: Pipeline Details
+        url: ${{ steps.trigger.output.PipelineUrl }}
