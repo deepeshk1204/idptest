@@ -27,7 +27,7 @@ spec:
       repositoryName:
         title: Repository Name
         readonly: true
-        description: Check your Repository Name
+        description: Check your Repository Name updaetd
         type: string
         ui:field: ContextViewer
         ui:options:
