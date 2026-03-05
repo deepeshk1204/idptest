@@ -1,0 +1,38 @@
+apiVersion: harness.io/v1
+kind: Workflow
+type: workflow
+identifier: Git_workflow_132
+name: Git workflow 132
+owner: user:account/deepesh.kumar@harness.io
+spec:
+  output:
+    links:
+    - title: Pipeline Details
+      url: ${{ steps.trigger.output.PipelineUrl }}
+  lifecycle: experimental
+  parameters:
+  - title: Service Details
+    required:
+    - service_name
+    properties:
+      token:
+        title: Harness Token
+        type: string
+        ui:widget: password
+        ui:field: HarnessAuthToken
+      service_name:
+        title: Service Name
+        type: string
+        description: Mention the project name
+  steps:
+  - id: trigger
+    name: Creating your appication
+    action: trigger:harness-custom-pipeline
+    input:
+      url: https://harness0.harness.io/ng/account/l7B_kbSEQD2wjrM7PShm5w/all/orgs/PROD/projects/Harness/pipelines/Branching_AND_Release/pipeline-studio/?storeType=REMOTE&connectorRef=&repoName=account.harness-pl-infra&branch=master
+      inputset:
+        service_name: ${{ parameters.service_name }}
+      apikey: ${{ parameters.token }}
+metadata:
+  tags:
+  - spotify
