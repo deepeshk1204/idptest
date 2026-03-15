@@ -6,6 +6,13 @@ pipeline:
   tags: {}
   stages:
     - stage:
+        name: Cust Acc
+        identifier: Cust_Acc
+        tags: {}
+        template:
+          templateRef: account.IDP_Custom
+          versionLabel: "1"
+    - stage:
         name: RemoteStageTemp
         identifier: RemoteStageTemp
         tags: {}
