@@ -1,0 +1,30 @@
+pipeline:
+  name: remote pipeline with remote stage template
+  identifier: remote_pipeline_with_remote_stage_template
+  projectIdentifier: Deepesh_CDE
+  orgIdentifier: IDP
+  tags: {}
+  stages:
+    - stage:
+        name: Custom One
+        identifier: Custom_One
+        description: ""
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - step:
+                  type: ShellScript
+                  name: ShellScript_1
+                  identifier: ShellScript_1
+                  spec:
+                    shell: Bash
+                    executionTarget: {}
+                    source:
+                      type: Inline
+                      spec:
+                        script: echo 'Hello'
+                    environmentVariables: []
+                    outputVariables: []
+                  timeout: 10m
+        tags: {}
