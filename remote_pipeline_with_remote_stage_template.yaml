@@ -6,6 +6,13 @@ pipeline:
   tags: {}
   stages:
     - stage:
+        name: RemoteStageTemp
+        identifier: RemoteStageTemp
+        tags: {}
+        template:
+          templateRef: RemoteStagetemplate
+          versionLabel: "1"
+    - stage:
         name: Custom One
         identifier: Custom_One
         description: ""
