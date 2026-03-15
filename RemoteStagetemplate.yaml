@@ -1,0 +1,27 @@
+template:
+  name: RemoteStagetemplate
+  identifier: RemoteStagetemplate
+  versionLabel: "1"
+  type: Stage
+  projectIdentifier: Deepesh_CDE
+  orgIdentifier: IDP
+  tags: {}
+  spec:
+    type: Custom
+    spec:
+      execution:
+        steps:
+          - step:
+              type: ShellScript
+              name: ShellScript_1
+              identifier: ShellScript_1
+              spec:
+                shell: Bash
+                executionTarget: {}
+                source:
+                  type: Inline
+                  spec:
+                    script: echo 'Custom Stage template'
+                environmentVariables: []
+                outputVariables: []
+              timeout: 10m
