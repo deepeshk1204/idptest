@@ -35,3 +35,9 @@ pipeline:
                     outputVariables: []
                   timeout: 10m
         tags: {}
+  variables:
+    - name: stageversion
+      type: String
+      description: ""
+      required: false
+      value: <+input>
