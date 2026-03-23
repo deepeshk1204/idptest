@@ -19,6 +19,12 @@ pipeline:
         template:
           templateRef: RemoteStagetemplate
           gitBranch: dev
+          templateInputs:
+            type: Custom
+            variables:
+              - name: demo
+                type: String
+                value: <+input>
     - stage:
         name: Custom One
         identifier: Custom_One
