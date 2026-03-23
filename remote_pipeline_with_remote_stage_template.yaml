@@ -11,13 +11,14 @@ pipeline:
         tags: {}
         template:
           templateRef: account.IDP_Custom
+          gitBranch: dev
     - stage:
         name: RemoteStageTemp
         identifier: RemoteStageTemp
         tags: {}
         template:
           templateRef: RemoteStagetemplate
-          versionLabel: "1"
+          gitBranch: dev
     - stage:
         name: Custom One
         identifier: Custom_One
