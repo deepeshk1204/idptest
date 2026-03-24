@@ -11,4 +11,3 @@ pipeline:
         tags: {}
         template:
           templateRef: account.IDP_Custom
-          gitBranch: dev
