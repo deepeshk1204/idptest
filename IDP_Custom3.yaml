@@ -1,0 +1,28 @@
+template:
+  name: IDP Custom
+  identifier: IDP_Custom
+  type: Stage
+  tags: {}
+  spec:
+    type: Custom
+    spec:
+      execution:
+        steps:
+          - step:
+              type: ShellScript
+              name: ShellScript_1
+              identifier: ShellScript_1
+              spec:
+                shell: Bash
+                executionTarget: {}
+                source:
+                  type: Inline
+                  spec:
+                    script: |-
+                      echo 'Hello Stage 1'
+                      echo 'Hello Stage 2'
+                      echo 'Hello Stage 3'
+                environmentVariables: []
+                outputVariables: []
+              timeout: 10m
+  versionLabel: "3"
