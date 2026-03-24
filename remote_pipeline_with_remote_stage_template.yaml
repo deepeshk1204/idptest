@@ -12,39 +12,3 @@ pipeline:
         template:
           templateRef: account.IDP_Custom
           gitBranch: dev
-    - stage:
-        name: RemoteStageTemp
-        identifier: RemoteStageTemp
-        tags: {}
-        template:
-          templateRef: RemoteStagetemplate
-          gitBranch: dev
-          templateInputs:
-            type: Custom
-            variables:
-              - name: demo
-                type: String
-                value: <+input>
-    - stage:
-        name: Custom One
-        identifier: Custom_One
-        description: ""
-        type: Custom
-        spec:
-          execution:
-            steps:
-              - step:
-                  type: ShellScript
-                  name: ShellScript_1
-                  identifier: ShellScript_1
-                  spec:
-                    shell: Bash
-                    executionTarget: {}
-                    source:
-                      type: Inline
-                      spec:
-                        script: echo 'Hello'
-                    environmentVariables: []
-                    outputVariables: []
-                  timeout: 10m
-        tags: {}
