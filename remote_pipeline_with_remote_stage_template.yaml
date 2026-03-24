@@ -11,3 +11,4 @@ pipeline:
         tags: {}
         template:
           templateRef: account.IDP_Custom
+          versionLabel: "3"
