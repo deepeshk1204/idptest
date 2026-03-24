@@ -1,0 +1,14 @@
+pipeline:
+  name: diff remote branch
+  identifier: diff_remote_branch
+  projectIdentifier: Deepesh_CDE
+  orgIdentifier: IDP
+  tags: {}
+  stages:
+    - stage:
+        name: Custom 1
+        identifier: Custom_1
+        tags: {}
+        template:
+          templateRef: account.IDP_Custom
+          versionLabel: "3"
