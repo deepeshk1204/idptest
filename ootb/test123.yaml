@@ -1,0 +1,74 @@
+apiVersion: harness.io/v1
+kind: Workflow
+type: service
+identifier: Test123
+name: Test123
+owner: group:account/_account_all_users
+spec:
+  output:
+    links:
+    - title: Pipeline Run
+      url: ${{ steps.scaffold.output.PipelineUrl }}
+  parameters:
+  - title: Service Details
+    required:
+    - service_name
+    - language
+    - owner_team
+    - repo_org
+    - token
+    properties:
+      token:
+        title: Harness Token
+        type: string
+        ui:widget: password
+        ui:field: HarnessAuthToken
+      service_name:
+        title: Service Name
+        type: string
+        pattern: ^[a-z][a-z0-9-]*$
+      language:
+        title: Language / Framework
+        type: string
+        enum:
+        - go-rest-api
+        - node-express
+        - python-fastapi
+        - java-springboot
+      owner_team:
+        title: Owning Team
+        type: string
+      description:
+        title: Description
+        type: string
+      repo_org:
+        title: Git Organization / Project
+        type: string
+      visibility:
+        title: Repo Visibility
+        type: string
+        enum:
+        - private
+        - internal
+        default: private
+  steps:
+  - id: scaffold
+    name: Scaffold Service
+    action: trigger:harness-custom-pipeline
+    input:
+      url: https://qa.harness.io/ng/account/zEaak-FLS425IEO7OLzMUg/all/orgs/IDP/projects/Deepesh_CDE/pipelines/Test123_ootb_scaffold_microservice/pipeline-studio/?storeType=INLINE
+      inputset:
+        service_name: ${{ parameters.service_name }}
+        language: ${{ parameters.language }}
+        owner_team: ${{ parameters.owner_team }}
+        description: ${{ parameters.description }}
+        repo_org: ${{ parameters.repo_org }}
+        visibility: ${{ parameters.visibility }}
+      apikey: ${{ parameters.token }}
+      showOutputVariables: true
+metadata:
+  description: Create a new microservice from a template — repo, CI pipeline, catalog
+    entry.
+  tags:
+  - ootb
+  - create-a-service
